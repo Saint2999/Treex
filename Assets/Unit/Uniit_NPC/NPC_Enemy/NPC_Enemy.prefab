@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 7262345303513246598}
   m_Layer: 6
   m_Name: NPC_Enemy
-  m_TagString: Player
+  m_TagString: EnemyUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -230,7 +230,7 @@ Animator:
   m_GameObject: {fileID: 5628018141983903104}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0e24c7a4f081cda42ab0a75b9c8f9097, type: 2}
+  m_Controller: {fileID: 9100000, guid: 79cbd137a4fbaa84f9eef36cf601c604, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -252,10 +252,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb4b506e3bf9e054ba1d66d670ee9dcb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  checkRadius: 0
+  currentHealth: 100
+  maxHealth: 100
+  speed: 2
+  attackDamage: 10
+  attackSpeed: 1
+  canAttack: 0
+  checkRadius: 5
   attackRadius: 0
-  shouldRotate: 0
+  shouldRotate: 1
   whatIsPlayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128

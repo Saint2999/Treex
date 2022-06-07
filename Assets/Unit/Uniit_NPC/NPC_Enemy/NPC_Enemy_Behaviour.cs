@@ -6,6 +6,9 @@ public class NPC_Enemy_Behaviour : NPC_Behaviour
 {
     private void Start()
     {
+        currentHealth = maxHealth = 100f;
+        attackDamage = 10f;
+        attackSpeed = 1f;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         target = GameObject.FindWithTag("FriendlyUnit").transform;
@@ -29,13 +32,29 @@ public class NPC_Enemy_Behaviour : NPC_Behaviour
 
     private void FixedUpdate() 
     {
-        if (isInChaseRange && !isInAttackRange)  
+        if (isInChaseRange/* && !isInAttackRange*/)  
         {
             MoveCharacter(movement);
         }     
-        if (isInAttackRange)
+        // if (isInAttackRange)
+        // {
+        //     rb.velocity = Vector2.zero;
+        // }
+    }
+
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "FriendlyUnit")
         {
-            rb.velocity = Vector2.zero;
+            if (attackSpeed <= canAttack)
+            {
+                other.gameObject.GetComponent<NPC_Friendly_Behaviour>().updateHealth(-attackDamage);
+                canAttack = 0f;
+            } 
+            else
+            {
+                canAttack += Time.deltaTime;
+            }
         }
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class NPC_Behaviour : Unit_Behaviour
 {
+    public float attackDamage;
+    public float attackSpeed;
+    public float canAttack;
     public float checkRadius;
     public float attackRadius;
     public bool shouldRotate;
