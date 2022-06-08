@@ -5,31 +5,47 @@ using UnityEngine;
 
 public class NPC_Behaviour : Unit_Behaviour
 {
-    public float attackDamage;
-    public float attackSpeed;
+    [SerializeField] protected float attackDamage;
+    [SerializeField] public float attackSpeed;
     public float canAttack;
-    public float checkRadius;
-    public float attackRadius;
+    [SerializeField] protected float checkRadius;
+    [SerializeField] protected float attackRadius;
     public bool shouldRotate;
-    public LayerMask whatIsPlayer;
+    [SerializeField] protected LayerMask targetLayer;
+    protected string targetTag;
     protected Transform target;
     protected bool isInChaseRange;
     protected bool isInAttackRange;
 
-    private void Start()
+    protected void initialize()
     {
-        
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+        target = GameObject.FindWithTag(targetTag).transform;
     }
 
 
-    private void Update()
+    protected void setDirection()
     {
-    
+        anim.SetBool("IsRunning", isInChaseRange);
+        isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, targetLayer);
+        dir = target.position - transform.position;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        dir.Normalize();
+        movement = dir;
+        if (shouldRotate)
+        {
+            anim.SetFloat("X", dir.x);
+            anim.SetFloat("Y", dir.y);
+        }
     }
 
 
-    protected void MoveCharacter(Vector2 dir)
+    protected void moveCharacter(Vector2 dir)
     {
-        rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
+        if (isInChaseRange)  
+        {
+            rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
+        }
     }
 }

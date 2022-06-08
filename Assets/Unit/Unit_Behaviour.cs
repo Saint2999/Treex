@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class Unit_Behaviour : MonoBehaviour
 {
-    [SerializeField] protected float currentHealth;
+    protected float currentHealth;
     [SerializeField] protected float maxHealth;
     public float speed;
     protected Animator anim;
@@ -31,7 +31,10 @@ public abstract class Unit_Behaviour : MonoBehaviour
         else if (currentHealth <= 0f)
             {
                 currentHealth = 0f;
-                Destroy(this.gameObject);
+                if (this.gameObject != null)
+                {
+                    Destroy(this.gameObject);
+                }
             }
     }
 }

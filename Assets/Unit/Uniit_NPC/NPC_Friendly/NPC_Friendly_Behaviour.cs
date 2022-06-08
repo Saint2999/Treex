@@ -4,15 +4,41 @@ using UnityEngine;
 
 public class NPC_Friendly_Behaviour : NPC_Behaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Collider2D previousCollider;
+    private void Start()
     {
-        currentHealth = maxHealth = 100f;
+        targetTag = "EnemyUnit";
+        initialize();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        setDirection();
     }
+
+    private void FixedUpdate() 
+    {
+        moveCharacter(movement);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.layer == targetLayer)
+        {
+            other.gameObject.layer = 0;
+            if (previousCollider != null)
+            {
+                previousCollider.gameObject.layer = targetLayer;
+            }
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.layer == targetLayer)
+        {
+            previousCollider = other;
+        }
+    }
+
 }
