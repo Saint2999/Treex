@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main menu.unity
+    guid: f6a5afa4ad0693d4b89850c45b919a89
+  - enabled: 1
+    path: Assets/Scenes/Rodion's scene.unity
+    guid: 4c5c68b6736fa2c4891edf99e7e76cb2
+  - enabled: 1
+    path: Assets/Scenes/SampleScene.unity
+    guid: b9418c82671eceb4e9a0e428cd66ec2e
   m_configObjects: {}
