@@ -6,7 +6,6 @@ using UnityEngine;
 public class OurCameraFollow : MonoBehaviour
 {
     public Transform target;
-    public float lerpSpeed = 1.0f;
 
     private Vector3 offset;
 
@@ -25,9 +24,10 @@ public class OurCameraFollow : MonoBehaviour
 
         targetPos = target.position + offset;
 
-        if (transform.position.y <= 5.88f && transform.position.y >= -0.5f)
+
+        if (target.position.y <= 2.42f && target.position.y >= -1.8f)
         {
-            transform.position = new Vector3(target.position.x + offset.x, target.position.y + offset.y, offset.z);
+            transform.position = new Vector3(offset.x, target.position.y + offset.y, offset.z);
         }
     }
 

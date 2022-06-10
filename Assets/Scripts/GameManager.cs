@@ -8,10 +8,20 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverUI;
 
+    public PauseMenu pauseMenu;
+
+    public void Start()
+    {
+        pauseMenu.Resume();
+        Time.timeScale = 1f;
+
+    }
+
     public void EndGame()
     {
         if (gameHasEnded == false)
         {
+            
             gameHasEnded = true;
             Debug.Log("Game over!");
             gameOverUI.SetActive(true);
