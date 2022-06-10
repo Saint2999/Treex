@@ -6,19 +6,28 @@ TagManager:
   tags:
   - EnemyUnit
   - FriendlyUnit
+  - LaserBeam
+  - Waypoint
+  - Orange
+  - Plum
+  - Pear
+  - GingerCat
+  - BlackCat
+  - WhiteCat
+  - Home
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Waypoint
   - Water
   - UI
   - Player
   - Unit_Friendly
-  - 
-  - 
-  - 
-  - 
+  - Home
+  - GingerPoint
+  - BlackPoint
+  - WhitePoint
   - 
   - 
   - 
