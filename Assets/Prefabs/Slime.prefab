@@ -22,6 +22,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 5628018141983903104, guid: 80760e7391b066a40bd41554e5b66fad,
+        type: 3}
+      propertyPath: m_TagString
+      value: EnemyUnit
+      objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903106, guid: 80760e7391b066a40bd41554e5b66fad,
         type: 3}
       propertyPath: m_RootOrder
@@ -119,6 +124,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903117, guid: 80760e7391b066a40bd41554e5b66fad,
         type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5628018141983903117, guid: 80760e7391b066a40bd41554e5b66fad,
+        type: 3}
       propertyPath: m_LinearDrag
       value: 1
       objectReference: {fileID: 0}
@@ -144,9 +154,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  speed: 1
+  speed: 0.2
   attackDamage: 10
   attackSpeed: 1
   canAttack: 0
   checkRadius: 5
   shouldRotate: 1
+--- !u!114 &4587677838919503613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276379047787777094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9bb8c3bcd8f8c54ea363e642c92740d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

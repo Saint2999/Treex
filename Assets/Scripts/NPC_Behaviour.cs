@@ -3,79 +3,59 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class NPC_Behaviour : Unit_Behaviour
+public abstract class NPC_Behaviour : Unit_Behaviour
 {
     [SerializeField] protected float attackDamage;
-    [SerializeField] public float attackSpeed;
-    public float canAttack;
-    [SerializeField] protected float checkRadius;
-    //[SerializeField] protected float attackRadius;
-    [SerializeField] protected bool shouldRotate;
+    [SerializeField] protected float attackSpeed;
+    protected float canAttack;
     protected LayerMask targetLayer;
     protected string targetTag;
     protected Transform targetTransform;
-    //protected bool isInChaseRange;
-    //protected bool isInAttackRange;
-    //protected Vector3 savedPosition;
+    protected GameObject collidingGameObject;
 
-    protected virtual void initialize()
+    protected abstract override void initialize();
+    protected abstract void attack();
+    protected override void setDirection()
     {
-        // anim = GetComponent<Animator>();
-        // rb = GetComponent<Rigidbody2D>();
-        // target = GameObject.FindWithTag(targetTag).transform;
-    }
-
-
-    protected void setDirection()
-    {
-        //anim.SetBool("IsMoving", true);
-        //isInChaseRange = Physics2D.OverlapCircle(transform.position, checkRadius, targetLayer);
         dir = targetTransform.position - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         dir.Normalize();
-        movement = dir;
-        anim.SetBool("IsMoving", movement.magnitude > 0);
-        if (shouldRotate)
+        anim.SetBool("IsMoving", dir.magnitude > 0);
+        switch(dir.x)
         {
-            switch(dir.x)
+            case >0:
             {
-                case >0:
-                {
-                    anim.SetInteger("Direction", 2);
-                    break;
-                }
-
-                case <0:
-                {
-                    anim.SetInteger("Direction", 3);
-                    break;
-                }
+                anim.SetInteger("Direction", 2);
+                break;
             }
-            switch(dir.y)
-            {
-                case >0:
-                {
-                    anim.SetInteger("Direction", 1);
-                    break;
-                }
 
-                case <0:
-                {
-                    anim.SetInteger("Direction", 0);
-                    break;
-                }
+            case <0:
+            {
+                anim.SetInteger("Direction", 3);
+                break;
+            }
+        }
+        switch(dir.y)
+        {
+            case >0:
+            {
+                anim.SetInteger("Direction", 1);
+                break;
+            }
+
+            case <0:
+            {
+                anim.SetInteger("Direction", 0);
+                break;
             }
         }
     }
-
-
-    protected void moveCharacter(Vector2 dir)
+    protected void moveCharacter()
     {
         transform.position = Vector2.MoveTowards(transform.position, targetTransform.position, speed * Time.deltaTime);
-        //if (isInChaseRange)  
-        //{
-            //rb.MovePosition((Vector2)transform.position + (dir * speed * Time.deltaTime));
-        //}
-
+    }
+    public float getAttackdamage()
+    {
+        return attackDamage;
     }
 }

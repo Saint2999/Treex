@@ -4,44 +4,55 @@ using UnityEngine;
 
 public class NPC_Enemy_Behaviour : NPC_Behaviour
 {
-    private void Start()
-    {
-        checkRadius = 100;
-        targetLayer = 8;
-        targetTag = "Home";
-        initialize();
-    }
-
-    private void Update()
-    {
-        setDirection();
-    }
-
-    private void FixedUpdate() 
-    {
-        moveCharacter(movement);
-    }
-
     protected override void initialize()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        targetTag = "Home";
         targetTransform = GameObject.FindWithTag(targetTag).transform;
     }
-
+    private void Start()
+    {
+        initialize();
+    }
+    private void Update()
+    {
+        setDirection();
+    }
+    private void FixedUpdate() 
+    {
+        moveCharacter();
+    }
     private void OnCollisionStay2D(Collision2D other)
     {
-        if (other.gameObject.tag == "FriendlyUnit")
+        collidingGameObject = other.gameObject;
+        attack();
+    }
+    protected override void attack()
+    {
+        if (collidingGameObject.tag == "WhiteCat")
         {
             if (attackSpeed <= canAttack)
             {
-                other.gameObject.GetComponent<NPC_Friendly_Behaviour>().updateHealth(-attackDamage);
+                collidingGameObject.GetComponent<WhiteKitty_Behaviour>().updateHealth(-attackDamage);
                 canAttack = 0f;
             } 
             else
+                {
+                    canAttack += Time.deltaTime;
+                }
+        }
+        if (collidingGameObject.tag == "Player")
+        {
+            if (attackSpeed <= canAttack)
             {
-                canAttack += Time.deltaTime;
-            }
+                collidingGameObject.GetComponent<Player_Behaviour>().updateHealth(-attackDamage);
+                canAttack = 0f;
+            } 
+            else
+                {
+                    canAttack += Time.deltaTime;
+                }
         }
     }
 }

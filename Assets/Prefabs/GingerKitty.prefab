@@ -174,3 +174,5 @@ MonoBehaviour:
   canAttack: 0
   checkRadius: 10
   shouldRotate: 1
+  projectile: {fileID: 8416923875679728953, guid: cc6fe4a85df15ec4f9a813dc481d124e,
+    type: 3}

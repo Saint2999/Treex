@@ -15,6 +15,11 @@ TagManager:
   - BlackCat
   - WhiteCat
   - Home
+  - Disabled
+  - GingerTeleport
+  - WhiteTeleport
+  - BlackTeleport
+  - Fence
   layers:
   - Default
   - TransparentFX
@@ -28,9 +33,9 @@ TagManager:
   - GingerPoint
   - BlackPoint
   - WhitePoint
-  - 
-  - 
-  - 
+  - Fence1
+  - Projectiles
+  - Fence2
   - 
   - 
   - 

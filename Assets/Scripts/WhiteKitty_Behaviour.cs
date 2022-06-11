@@ -4,42 +4,56 @@ using UnityEngine;
 
 public class WhiteKitty_Behaviour : NPC_Friendly_Behaviour
 {
+    protected override void initialize()
+    {
+        targetTag = "WhiteTeleport";
+        teleportTag = "WhiteCat";
+        animDirection = 0;
+        isInPlace = false;
+        isFed = false;
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
     void Start()
     {
         initialize();
     }
-
-    void Update()
-    {
-    }
-
     private void FixedUpdate() 
     {
         if (isFed && !isInPlace)
         {
             targetTransform = GameObject.FindWithTag(targetTag).transform;
             setDirection();
-            moveCharacter(movement);
+            moveCharacter();
         }
-    }
-
-    protected override void initialize()
-    {
-        targetTag = "WhiteTeleport";
-        whereToTeleport = "WhiteCat";
-        direction = 0;
-        isInPlace = false;
-        isFed = false;
-        checkRadius = 5;
-        anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        collidingGameObject = other.gameObject;
         if (isFed)
         {
-            teleportTheCat(other);
+            teleportTheCat();
+        }
+    }
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        collidingGameObject = other.gameObject;
+        attack();
+    }
+    protected override void attack()
+    {
+        if (collidingGameObject.tag == "EnemyUnit")
+        {
+            if (attackSpeed <= canAttack)
+            {
+                collidingGameObject.GetComponent<NPC_Enemy_Behaviour>().updateHealth(-attackDamage);
+                canAttack = 0f;
+            } 
+            else
+            {
+                canAttack += Time.deltaTime;
+            }
         }
     }
 }

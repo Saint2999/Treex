@@ -6,12 +6,13 @@ public abstract class Unit_Behaviour : MonoBehaviour
 {
     protected float currentHealth;
     [SerializeField] protected float maxHealth;
-    public float speed;
+    [SerializeField] protected float speed;
     protected Animator anim;
     protected Rigidbody2D rb;
-    protected Vector2 movement;
-    protected Vector3 dir;
-    
+    protected Vector2 dir;
+
+    protected abstract void initialize();
+    protected abstract void setDirection();
     public void updateHealth(float mod) 
     {
         currentHealth += mod;

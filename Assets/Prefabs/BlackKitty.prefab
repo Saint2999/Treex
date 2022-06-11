@@ -174,3 +174,7 @@ MonoBehaviour:
   canAttack: 0
   checkRadius: 5
   shouldRotate: 1
+  projectile: {fileID: 8416923875679728953, guid: ff8d331bad91db044a45f194506ac551,
+    type: 3}
+  defDistance: 0
+  m_lineRenderer: {fileID: 0}
