@@ -168,11 +168,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  speed: 2
-  attackDamage: 10
-  attackSpeed: 1
-  canAttack: 0
-  checkRadius: 10
-  shouldRotate: 1
+  speed: 3
+  attackDamage: 3
+  firerate: 1
+  force: 100
   projectile: {fileID: 8416923875679728953, guid: cc6fe4a85df15ec4f9a813dc481d124e,
     type: 3}

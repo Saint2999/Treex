@@ -4,9 +4,6 @@ using UnityEngine;
 
 public abstract class NPC_Friendly_Behaviour : NPC_Behaviour
 {
-    [SerializeField] protected float firerate;
-    [SerializeField] protected float force;
-    [SerializeField] protected GameObject projectile;
     protected GameObject targetGameObject;
     protected GameObject projectileInstance;
     protected Vector2 attackDir;

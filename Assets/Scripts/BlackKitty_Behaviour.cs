@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class BlackKitty_Behaviour : NPC_Friendly_Behaviour
 {
+    [SerializeField] protected float firerate;
+    [SerializeField] protected float force;
+    [SerializeField] protected GameObject projectile;
     protected override void initialize()
     {
+        currentHealth = maxHealth;
         targetTag = "BlackTeleport";
         teleportTag = "BlackCat";
         animDirection = 3;
@@ -49,7 +53,7 @@ public class BlackKitty_Behaviour : NPC_Friendly_Behaviour
         if (isInPlace)
         {
             attackDir = targetTransform.position - transform.position;
-            if (targetGameObject)
+            if (targetGameObject != null)
             {
                 if (Time.time > nextTimeToShoot)
                 {

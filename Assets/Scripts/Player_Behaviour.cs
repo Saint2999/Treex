@@ -5,11 +5,15 @@ using UnityEngine;
 public class Player_Behaviour : Unit_Behaviour
 {
     private int orangeCount, plumCount, pearCount;
-    
     protected override void initialize()
     {
+        currentHealth = maxHealth;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+    }
+    private void Start() 
+    {
+        initialize();
     }
     private void Update()
     {

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class GingerKitty_Behaviour : NPC_Friendly_Behaviour
 {
+    [SerializeField] protected float firerate;
+    [SerializeField] protected float force;
+    [SerializeField] protected GameObject projectile;
+
     protected override void initialize()
     {
+        currentHealth = maxHealth;
         targetTag = "GingerTeleport";
         teleportTag = "GingerCat";
         animDirection = 2;
@@ -50,7 +55,7 @@ public class GingerKitty_Behaviour : NPC_Friendly_Behaviour
         if (isInPlace)
         {
             attackDir = targetTransform.position - transform.position;
-            if (targetGameObject)
+            if (targetGameObject != null)
             {
                 if (Time.time > nextTimeToShoot)
                 {

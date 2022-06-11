@@ -170,11 +170,7 @@ MonoBehaviour:
   maxHealth: 100
   speed: 3
   attackDamage: 10
-  attackSpeed: 1
-  canAttack: 0
-  checkRadius: 5
-  shouldRotate: 1
+  firerate: 0.3
+  force: 50
   projectile: {fileID: 8416923875679728953, guid: ff8d331bad91db044a45f194506ac551,
     type: 3}
-  defDistance: 0
-  m_lineRenderer: {fileID: 0}

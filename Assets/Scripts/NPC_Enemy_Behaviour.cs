@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class NPC_Enemy_Behaviour : NPC_Behaviour
 {
+    [SerializeField] protected float attackSpeed;
+    
     protected override void initialize()
     {
+        currentHealth = maxHealth;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         targetTag = "Home";

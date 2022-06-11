@@ -309,3 +309,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kitty: {fileID: 5628018141983903104, guid: 0f7ff062fdabc484c980fd48b55a9d92, type: 3}
+  wall: Fence1

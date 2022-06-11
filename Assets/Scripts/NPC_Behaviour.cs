@@ -6,7 +6,6 @@ using UnityEngine;
 public abstract class NPC_Behaviour : Unit_Behaviour
 {
     [SerializeField] protected float attackDamage;
-    [SerializeField] protected float attackSpeed;
     protected float canAttack;
     protected LayerMask targetLayer;
     protected string targetTag;

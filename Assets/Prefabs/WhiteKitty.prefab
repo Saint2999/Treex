@@ -113,10 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64ad1b24f68f734ba8582654b67f8c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 1000
   speed: 3
   attackDamage: 10
   attackSpeed: 1
-  canAttack: 0
-  checkRadius: 5
-  shouldRotate: 1
+  firerate: 0
+  force: 0
+  projectile: {fileID: 0}

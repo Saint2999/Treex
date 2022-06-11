@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class WhiteKitty_Behaviour : NPC_Friendly_Behaviour
 {
+    [SerializeField] protected float attackSpeed;
+    
     protected override void initialize()
     {
+        currentHealth = maxHealth;
         targetTag = "WhiteTeleport";
         teleportTag = "WhiteCat";
         animDirection = 0;
